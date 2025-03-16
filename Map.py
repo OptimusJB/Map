@@ -1094,5 +1094,6 @@ class Map:
                 position_souris = new_position_souris
             clock_global.tick(fps)
 
-map = Map()
-map.mapmaker()
+if __name__ == '__main__':
+    map = Map()
+    map.mapmaker()
