@@ -345,6 +345,9 @@ class Map:
         # calcul des dimensions de la map
         largeur_max = float("inf") * -1
         hauteur_max = float("inf") * -1
+        if len(self.map) == 0:
+            largeur_max = 1
+            hauteur_max = 1
         for tile in self.map:
             #print(not tile.get_animated,  tile.get_visible())
             if not tile.get_animated() and tile.get_visible():
@@ -497,7 +500,8 @@ class Map:
 
         x_blit = self.__camera_x*-1 - self.decalage_negatif[0]
         y_blit = self.__camera_y*-1 - self.decalage_negatif[1]
-        screen.blit(self.surface_map, (x_blit, y_blit))
+        rect = pygame.rect.Rect(self.decalage_negatif[0]+self.__camera_x, self.decalage_negatif[1]+self.__camera_y, 1920, 1080)
+        screen.blit(self.surface_map, (0, 0), area=rect)
         for tile in self.map:
             # calcul de est-ce que la tile est dans le champs
             if tile.get_visible():
@@ -1004,6 +1008,7 @@ class Map:
                                                 self.map = []
                                                 self.spawn_points = []
                                                 self.event_points = []
+                                                self.maj_map_image()
                                                 boucle_fichier = False
                                             elif back_btn.collidepoint(event_fichier.pos):
                                                 boucle_fichier = False
