@@ -491,8 +491,6 @@ class Map:
         assert dimensions[0] != None and dimensions[1] != None, "les dimensions d'affichage de la map ne sont pas définies, définissez les avec set_dimensions()"
         if not self.background == "none":
             screen.fill(self.background)
-        else:
-            screen.fill((0,0,0,0))
 
         # tiles dans self.map
         # blit de surface_map
