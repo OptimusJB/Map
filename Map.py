@@ -498,7 +498,7 @@ class Map:
 
         x_blit = self.__camera_x*-1 - self.decalage_negatif[0]
         y_blit = self.__camera_y*-1 - self.decalage_negatif[1]
-        rect = pygame.rect.Rect(self.decalage_negatif[0]+self.__camera_x, self.decalage_negatif[1]+self.__camera_y, 1920, 1080)
+        rect = pygame.rect.Rect(self.decalage_negatif[0]+self.__camera_x, self.decalage_negatif[1]+self.__camera_y, self.largeur, self.hauteur)
         screen.blit(self.surface_map, (0, 0), area=rect)
         for tile in self.map:
             # calcul de est-ce que la tile est dans le champs
@@ -564,7 +564,7 @@ class Map:
         pygame.init()
         screen = pygame.display.set_mode((1920,1080))
         pygame.display.set_caption("map maker par JB")
-        pygame.display.set_icon(pygame.image.load("mapmaker_assets/logo.jpg"))
+        pygame.display.set_icon(pygame.transform.smoothscale(pygame.image.load("mapmaker_assets/logo.jpg"), (32, 32)))
         self.is_map_maker = True
         self.set_dimensions((1920-600, 1080))
 
